@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('equipos', function (Blueprint $table) {
+            $table->id(); // Por defecto es autoincrementable, se puede cambiar.
+            $table->string('nombre',50);
+            $table->string('entrenador',50);
+            $table->timestamps(); // agrega 2 campos, uno es fecha de creacion y la otra de modificacion.
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('equipos');
     }
 };

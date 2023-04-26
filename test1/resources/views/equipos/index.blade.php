@@ -21,10 +21,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ( $equipos as $equipo )
                     <tr>
-                        <td class="align-middle">1</td>
-                        <td class="align-middle">Lorem Ipsums</td>
-                        <td class="align-middle">Jewell Sein</td>
+                        <td class="align-middle">{{$equipo->id}}</td>
+                        <td class="align-middle">{{$equipo->nombre}}</td>
+                        <td class="align-middle">{{$equipo->entrenador}}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                 data-bs-title="Borrar Equipo">
@@ -40,42 +41,54 @@
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="align-middle">2</td>
-                        <td class="align-middle">Lorem Ipsums</td>
-                        <td class="align-middle">Jewell Sein</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
-                                data-bs-title="Borrar Equipo">
-                                <span class="material-icons">delete</span>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
-                                data-bs-title="Editar Equipo">
-                                <span class="material-icons">edit</span>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
-                                data-bs-title="Ver Equipo">
-                                <span class="material-icons">group</span>
-                            </a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-
+        <!-- https://www.geeksforgeeks.org/how-to-insert-form-data-into-database-using-php/ -->
+        
         <!-- form agregar equipo -->
+        
+        {{-- <?php
+            $conn = mysqli_connect("localhost","root","","dow302_futbol")
+            if ($conn === false){
+                die("ERROR: Could not connect. "
+                    . mysqli_connect_error());
+            }
+
+            $nombre =$_REQUEST['nombre'];
+            $entrenador =$_REQUEST['entrenador'];
+
+            $sql = "INSERT INTO equipos VALUES ('$nombre'.'$entrenador')";
+            if(mysqli_query($conn, $sql)){
+                echo "<h3>data stored in a database successfully."
+                    . " Please browse your localhost php my admin"
+                    . " to view the updated data</h3>";
+    
+                echo nl2br("\n$nombre\n $entrenador");
+            } else{
+                echo "ERROR: Hush! Sorry $sql. "
+                    . mysqli_error($conn);
+            }
+            mysqli_close($conn);
+
+        ?> --}}
+
+
+
+
         <div class="col-12 col-lg-4 order-first order-lg-last">
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Equipo</div>
                 <div class="card-body">
-                    <form>
+                    <form action = "index.php" method="post">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" id="nombre" class="form-control">
+                            <input type="text" name ="nombre" id="nombre" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="entrenador" class="form-label">Entrenador</label>
-                            <input type="text" id="entrenador" class="form-control">
+                            <input type="text" name = "entrenador" id="entrenador" class="form-control">
                         </div>
                         <div class="mb-3 d-grid gap-2 d-lg-block">
                             <button class="btn btn-warning">Cancelar</button>
