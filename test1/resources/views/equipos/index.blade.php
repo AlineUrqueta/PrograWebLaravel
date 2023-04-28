@@ -28,15 +28,15 @@
                         <td class="align-middle">{{$equipo->entrenador}}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
-                                data-bs-title="Borrar Equipo">
+                                data-bs-title="Borrar {{$equipo->nombre}}">
                                 <span class="material-icons">delete</span>
                             </a>
                             <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
-                                data-bs-title="Editar Equipo">
+                                data-bs-title="Editar {{$equipo->nombre}}">
                                 <span class="material-icons">edit</span>
                             </a>
                             <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
-                                data-bs-title="Ver Equipo">
+                                data-bs-title="Ver {{$equipo->nombre}}">
                                 <span class="material-icons">group</span>
                             </a>
                         </td>

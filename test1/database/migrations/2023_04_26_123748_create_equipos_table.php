@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->id(); // Por defecto es autoincrementable, se puede cambiar.
+            $table->unsignedInteger('id')->autoIncrement();
+            /**$table->id(); // Por defecto es autoincrementable, se puede cambiar.**/
             $table->string('nombre',50);
             $table->string('entrenador',50);
             $table->timestamps(); // agrega 2 campos, uno es fecha de creacion y la otra de modificacion.
