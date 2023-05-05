@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2023 a las 15:58:49
+-- Tiempo de generación: 05-05-2023 a las 18:07:14
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,7 +44,8 @@ INSERT INTO `equipos` (`id`, `nombre`, `entrenador`, `created_at`, `updated_at`)
 (2, 'Manchester City', 'Pelligrini', '2023-04-26 13:05:07', '2023-04-26 13:06:01'),
 (3, 'Everton', 'Guardiola', '2023-04-26 14:59:38', '2023-04-26 14:58:55'),
 (4, 'Lalalala', 'Juan Perez', '2023-05-03 12:49:15', '2023-05-03 12:49:15'),
-(5, 'U de chile', 'asfasdf', '2023-05-03 13:17:50', '2023-05-03 13:17:50');
+(5, 'U de chile', 'asfasdf', '2023-05-03 13:17:50', '2023-05-03 13:17:50'),
+(6, 'weqweqw', 'adasdas', '2023-05-05 14:28:44', '2023-05-05 14:28:44');
 
 -- --------------------------------------------------------
 
@@ -62,6 +63,15 @@ CREATE TABLE `jugadores` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `equipo_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `jugadores`
+--
+
+INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `posicion`, `numero`, `created_at`, `updated_at`, `equipo_id`) VALUES
+(1, 'Juan', 'Perez', 'Volante', 10, '2023-05-10 14:55:50', '2023-05-05 14:55:50', 1),
+(2, 'Maite', 'Errazuriz', 'Delantero', 1, '2023-05-05 14:59:29', '2023-05-05 14:59:29', 1),
+(3, 'Francisco', 'Perez', 'Portero', 17, '2023-05-05 15:00:51', '2023-05-05 15:00:51', 3);
 
 -- --------------------------------------------------------
 
@@ -142,13 +152,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
