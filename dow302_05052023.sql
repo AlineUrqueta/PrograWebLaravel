@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2023 a las 18:07:14
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 05-05-2023 a las 18:00:44
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dow302_futbol`
 --
+CREATE DATABASE IF NOT EXISTS `dow302_futbol` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dow302_futbol`;
 
 -- --------------------------------------------------------
 
@@ -29,8 +31,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `equipos` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `entrenador` varchar(50) NOT NULL,
+  `nombre` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `entrenador` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -40,12 +42,14 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id`, `nombre`, `entrenador`, `created_at`, `updated_at`) VALUES
-(1, 'Colo Colo', 'Diego Maradona', '2023-05-03 12:39:53', '2023-05-03 12:39:53'),
-(2, 'Manchester City', 'Pelligrini', '2023-04-26 13:05:07', '2023-04-26 13:06:01'),
-(3, 'Everton', 'Guardiola', '2023-04-26 14:59:38', '2023-04-26 14:58:55'),
-(4, 'Lalalala', 'Juan Perez', '2023-05-03 12:49:15', '2023-05-03 12:49:15'),
-(5, 'U de chile', 'asfasdf', '2023-05-03 13:17:50', '2023-05-03 13:17:50'),
-(6, 'weqweqw', 'adasdas', '2023-05-05 14:28:44', '2023-05-05 14:28:44');
+(1, 'Colo Colo', 'Gustavo Quinteros', '2023-04-28 15:21:51', NULL),
+(2, 'Universidad Católica', 'Cristian Paolucci', '2023-04-28 15:21:51', NULL),
+(3, 'Universidad de Chile', 'Santiago Escobar', '2023-04-28 15:21:51', NULL),
+(4, 'Manchester City', 'Pep Guardiola', '2023-04-28 15:21:51', NULL),
+(5, 'Barcelona', 'Xavi Hernández', '2023-04-28 15:21:51', NULL),
+(6, 'Real Madrid', 'Carlo Ancelotti', '2023-04-28 15:21:51', NULL),
+(7, 'Everton', 'Nelson Acosta', '2023-04-28 15:21:51', NULL),
+(8, 'San Luis', 'Francisco Bosan', '2023-05-03 13:14:12', '2023-05-03 13:14:12');
 
 -- --------------------------------------------------------
 
@@ -55,9 +59,9 @@ INSERT INTO `equipos` (`id`, `nombre`, `entrenador`, `created_at`, `updated_at`)
 
 CREATE TABLE `jugadores` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `apellido` varchar(20) NOT NULL,
-  `posicion` varchar(20) NOT NULL,
+  `apellido` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `posicion` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `numero` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -68,10 +72,10 @@ CREATE TABLE `jugadores` (
 -- Volcado de datos para la tabla `jugadores`
 --
 
-INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `posicion`, `numero`, `created_at`, `updated_at`, `equipo_id`) VALUES
-(1, 'Juan', 'Perez', 'Volante', 10, '2023-05-10 14:55:50', '2023-05-05 14:55:50', 1),
-(2, 'Maite', 'Errazuriz', 'Delantero', 1, '2023-05-05 14:59:29', '2023-05-05 14:59:29', 1),
-(3, 'Francisco', 'Perez', 'Portero', 17, '2023-05-05 15:00:51', '2023-05-05 15:00:51', 3);
+INSERT INTO `jugadores` (`id`, `apellido`, `nombre`, `posicion`, `numero`, `created_at`, `updated_at`, `equipo_id`) VALUES
+(1, 'Gonzalez', 'Juan', 'Volante', 17, '2023-05-05 14:50:10', '2023-05-05 14:50:10', 8),
+(2, 'Perez', 'Diego', 'Arquero', 1, '2023-05-05 14:50:10', NULL, 7),
+(3, 'Pereira', 'Mauricio', 'Delantero', 7, '2023-05-05 15:05:10', NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -81,7 +85,7 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `posicion`, `numero`, `crea
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -91,8 +95,8 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(4, '2023_04_26_123748_create_equipos_table', 1),
-(5, '2023_05_03_093220_create_jugadores_table', 2);
+(4, '2023_04_26_123211_create_equipos_table', 1),
+(5, '2023_05_03_092652_create_jugadores_table', 2);
 
 -- --------------------------------------------------------
 
@@ -102,11 +106,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -152,7 +156,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `jugadores`
