@@ -51,7 +51,7 @@
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Jugadores</div>
                 <div class="card-body">
-                    <form action = "{{route('equipos.store')}}" method="POST">
+                    <form action = "{{route('jugadores.store')}}" method="POST">
                         @csrf
                         <!-- for, id y name deben tener el mismo nombre. -->
                         <div class="mb-3">
@@ -91,12 +91,14 @@
 
                         <div class="form-group mb-3">
                             <label for="equipo" class="form-label">Equipo</label>
-                            <select name="" id="" class = "form-control">
+                            <select name="equipo" id="equipo" class = "form-control">
                                 @foreach ($equipos as $equipo)
                                     <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
+
+
 
                         <div class="mb-3 d-grid gap-2 d-lg-block">
                             <button type = "reset" class="btn btn-warning">Cancelar</button>
@@ -108,8 +110,5 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection
 

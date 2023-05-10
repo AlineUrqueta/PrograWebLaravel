@@ -15,10 +15,12 @@
                 <thead>
                     <tr>
                         <th>N°</th>
-                        <th>Nombre</th>
-                        <th>Entrenador</th>
-                        <th>Acciones</th>
+                        <th class = "text-center">Nombre</th>
+                        <th class = "text-center">Entrenador</th>
+                        <th colspan = "3" class = "text-center">Acciones</th>
+                        
                     </tr>
+
                 </thead>
                 <tbody>
                     @foreach ( $equipos as $equipo )
@@ -26,15 +28,26 @@
                         <td class="align-middle">{{$equipo->id}}</td>
                         <td class="align-middle">{{$equipo->nombre}}</td>
                         <td class="align-middle">{{$equipo->entrenador}}</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
+                        <td class ="text-center" style = "width:1rem;">
+                            <!-- Borrar -->
+                            <form method="POST" action = "{{route('equipos.destroy',$equipo->id)}}" >
+                                @csrf
+                                @method('delete')
+                                <button type = "submit" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                 data-bs-title="Borrar {{$equipo->nombre}}">
-                                <span class="material-icons">delete</span>
-                            </a>
+                                <span class="material-icons">delete</span></button>
+                            </form>
+                            
+                        </td>
+                        <td class ="text-center" style = "width:1rem;">
+                            <!-- Editar-->
                             <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
                                 data-bs-title="Editar {{$equipo->nombre}}">
                                 <span class="material-icons">edit</span>
                             </a>
+                        </td>
+                        <td class ="text-center" style = "width:1rem;">
+                            <!--Group?-->
                             <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
                                 data-bs-title="Ver {{$equipo->nombre}}">
                                 <span class="material-icons">group</span>

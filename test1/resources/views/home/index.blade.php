@@ -17,8 +17,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Equipos</h5>
                         <div class="btn-group d-flex justify-content-center">
-                            <button class="btn btn-outline-success">Ver</button>
-                            <button class="btn btn-outline-success">Agregar</button>
+                            <button class="btn btn-outline-success"><a class="nav-link @if(Route::current()->getName()== 'equipos.index') active @endif " href="{{route('equipos.index')}}">Ver</a></button>
+                            <button class="btn btn-outline-success"><a class="nav-link @if(Route::current()->getName()== 'equipos.index') active @endif " href="{{route('equipos.index')}}">Agregar</a></button>
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Jugadores</h5>
                         <div class="btn-group d-flex justify-content-center">
-                            <button class="btn btn-outline-success">Ver</button>
-                            <button class="btn btn-outline-success">Agregar</button>
+                            <button class="btn btn-outline-success"><a class="nav-link @if(Route::current()->getName()== 'jugadores.index') active @endif " href="{{route('jugadores.index')}}">Ver</a></button>
+                            <button class="btn btn-outline-success"><a class="nav-link @if(Route::current()->getName()== 'jugadores.index') active @endif " href="{{route('jugadores.index')}}">Agregar</a></button>
                         </div>
                     </div>
                 </div>

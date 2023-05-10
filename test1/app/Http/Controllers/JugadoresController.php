@@ -13,4 +13,16 @@ class JugadoresController extends Controller
         $equipos = Equipo::all();
         return view('jugadores.index',compact('jugadores','equipos'));
     }
+
+    public function store(Request $request){
+        $jugador = new Jugador();
+        $jugador -> nombre = $request->nombre;
+        $jugador -> apellido = $request->apellido;
+        $jugador -> posicion = $request->posicion;
+        $jugador -> numero = $request->numero;
+        $jugador -> equipo_id = $request->equipo;
+        $jugador -> save();
+        return redirect()->route('jugadores.index');
+    }
+  
 }
