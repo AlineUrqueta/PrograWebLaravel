@@ -85,9 +85,10 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="numero" class="form-label">Número</label>
-                            <input type="text" name = "numero" id="numero" class="form-control">
+                            <label for="numero" class="form-label">Número de Camiseta: </label>
+                            <input type="number" name = "numero" id="numero" class="form-control" min = "1" max = "99">
                         </div>
+
                         <div class="mb-3">
                             <label for="equipo" class="form-label">Equipo</label>
                             <select name="" id="" class = "form-control">
@@ -95,6 +96,7 @@
                                 <option value="">Prueba 2</option>
                             </select>
                         </div>
+
                         <div class="mb-3 d-grid gap-2 d-lg-block">
                             <button type = "reset" class="btn btn-warning">Cancelar</button>
                             <button type = "submit" class="btn btn-success">Agregar Jugador</button>
