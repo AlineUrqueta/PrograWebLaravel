@@ -84,16 +84,17 @@
                             </div>
                         </div>
                         
-                        <div class="mb-3">
+                        <div class="form-group mb-3">
                             <label for="numero" class="form-label">Número de Camiseta: </label>
                             <input type="number" name = "numero" id="numero" class="form-control" min = "1" max = "99">
                         </div>
 
-                        <div class="mb-3">
+                        <div class="form-group mb-3">
                             <label for="equipo" class="form-label">Equipo</label>
                             <select name="" id="" class = "form-control">
-                                <option value="">Prueba</option>
-                                <option value="">Prueba 2</option>
+                                @foreach ($equipos as $equipo)
+                                    <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -107,4 +108,8 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection
+
