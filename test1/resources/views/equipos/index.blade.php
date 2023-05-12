@@ -30,13 +30,42 @@
                         <td class="align-middle">{{$equipo->entrenador}}</td>
                         <td class ="text-center" style = "width:1rem;">
                             <!-- Borrar -->
-                            <form method="POST" action = "{{route('equipos.destroy',$equipo->id)}}" >
+                            <span data-bs-toggle="tooltip" data-bs-title="Borrar {{$equipo->nombre}}">
+                                <button type="button" class="btn btn-sm btn-danger pb-0" data-bs-toggle="modal" data-bs-target="#equipoBorrarModel{{$equipo->id}}">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </span>
+
+                            <div class="modal fade" id="equipoBorrarModel{{$equipo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Equipo</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      ¿Desea eliminar el equipo {{$equipo->nombre}}?
+                                    </div>
+                                    <div class="modal-footer">
+                            
+                                        <form method="POST" action = "{{route('equipos.destroy',$equipo->id)}}" >
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-danger">Borrar Equipo</button>
+                                        </form>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            {{--<form method="POST" action = "{{route('equipos.destroy',$equipo->id)}}" >
                                 @csrf
                                 @method('delete')
                                 <button type = "submit" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                 data-bs-title="Borrar {{$equipo->nombre}}">
                                 <span class="material-icons">delete</span></button>
-                            </form>
+                            </form>--}}
                             
                         </td>
                         <td class ="text-center" style = "width:1rem;">
@@ -48,7 +77,7 @@
                         </td>
                         <td class ="text-center" style = "width:1rem;">
                             <!--Group?-->
-                            <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
+                            <a href="{{route('equipos.show',$equipo->id)}}" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
                                 data-bs-title="Ver {{$equipo->nombre}}">
                                 <span class="material-icons">group</span>
                             </a>
@@ -59,35 +88,7 @@
             </table>
         </div>
         <!-- https://www.geeksforgeeks.org/how-to-insert-form-data-into-database-using-php/ -->
-        
-        <!-- form agregar equipo -->
-        
-        {{-- <?php
-            $conn = mysqli_connect("localhost","root","","dow302_futbol")
-            if ($conn === false){
-                die("ERROR: Could not connect. "
-                    . mysqli_connect_error());
-            }
-
-            $nombre =$_REQUEST['nombre'];
-            $entrenador =$_REQUEST['entrenador'];
-
-            $sql = "INSERT INTO equipos VALUES ('$nombre'.'$entrenador')";
-            if(mysqli_query($conn, $sql)){
-                echo "<h3>data stored in a database successfully."
-                    . " Please browse your localhost php my admin"
-                    . " to view the updated data</h3>";
-    
-                echo nl2br("\n$nombre\n $entrenador");
-            } else{
-                echo "ERROR: Hush! Sorry $sql. "
-                    . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-
-        ?> --}}
-
-
+                
         <div class="col-12 col-lg-4 order-first order-lg-last">
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Equipo</div>
@@ -113,4 +114,5 @@
         </div>
     </div>
 </div>
+
 @endsection

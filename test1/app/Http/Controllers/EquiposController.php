@@ -30,5 +30,9 @@ class EquiposController extends Controller
         return redirect()->route('equipos.index');
     }
 
+    public function show(Equipo $equipo){
+        return view('equipos.show',compact('equipo'));
+    }
+
     
 }

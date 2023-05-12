@@ -20,6 +20,7 @@ class JugadoresController extends Controller
         $jugador -> apellido = $request->apellido;
         $jugador -> posicion = $request->posicion;
         $jugador -> numero = $request->numero;
+        $jugador -> imagen = $request->imagen->store('public/jugadores');
         $jugador -> equipo_id = $request->equipo;
         $jugador -> save();
         return redirect()->route('jugadores.index');

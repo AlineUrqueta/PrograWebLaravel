@@ -19,6 +19,7 @@
                         <th>Apellido</th>
                         <th>Posicion</th>
                         <th>Numero</th>
+                        <th>Equipo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,6 +31,9 @@
                         <td class="align-middle">{{$jugador->apellido}}</td>
                         <td class="align-middle">{{$jugador->posicion}}</td>
                         <td class="align-middle">{{$jugador->numero}}</td>
+                        <td class="align-middle">
+                            {{$jugador->equipo!=null?$jugador->equipo->nombre:'Sin Equipo'}}</td>
+                            <!-- Condicion verdad ? si es verdadero: si es falso (Operacion Ternaria) -->
                         <td>
                             <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                 data-bs-title="Borrar {{$jugador->nombre}}">
@@ -51,7 +55,7 @@
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Jugadores</div>
                 <div class="card-body">
-                    <form action = "{{route('jugadores.store')}}" method="POST">
+                    <form action = "{{route('jugadores.store')}}" method="POST" enctype = "multipart/form-data">
                         @csrf
                         <!-- for, id y name deben tener el mismo nombre. -->
                         <div class="mb-3">
@@ -96,6 +100,11 @@
                                     <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="imagen"> Imagen: </label>
+                            <input type="file" id= "imagen" name = "imagen" class = "form-control-file">
                         </div>
 
 
