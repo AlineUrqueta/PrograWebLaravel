@@ -39,7 +39,7 @@
                                 data-bs-title="Borrar {{$jugador->nombre}}">
                                 <span class="material-icons">delete</span>
                             </a>
-                            <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
+                            <a href="{{route('jugadores.edit',$jugador->id)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
                                 data-bs-title="Editar {{$jugador->nombre}}">
                                 <span class="material-icons">edit</span>
                             </a>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="form-check form-check-inline" >
                                     <input type="radio" class = "form-check-input" id="pos-volante" name="posicion" value="Volante"> <!--Value va a la base de datos-->
-                                    <label class ="form-check-label"for="pos-volante">volante</label>
+                                    <label class ="form-check-label"for="pos-volante">Volante</label>
                                 </div>
                             </div>
                         </div>

@@ -14,9 +14,10 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>N°</th>
+                        <th>ID Equipo</th>
                         <th class = "text-center">Nombre</th>
                         <th class = "text-center">Entrenador</th>
+                        <th>Plantel</th>
                         <th colspan = "3" class = "text-center">Acciones</th>
                         
                     </tr>
@@ -28,6 +29,7 @@
                         <td class="align-middle">{{$equipo->id}}</td>
                         <td class="align-middle">{{$equipo->nombre}}</td>
                         <td class="align-middle">{{$equipo->entrenador}}</td>
+                        <td class="align-middle">{{count($equipo->jugadores)}}</td>
                         <td class ="text-center" style = "width:1rem;">
                             <!-- Borrar -->
                             <span data-bs-toggle="tooltip" data-bs-title="Borrar {{$equipo->nombre}}">

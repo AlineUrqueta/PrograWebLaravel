@@ -25,5 +25,11 @@ class JugadoresController extends Controller
         $jugador -> save();
         return redirect()->route('jugadores.index');
     }
+
+    public function edit(Jugador $jugador){
+        return view('jugadores.edit',compact('jugador'));
+    }
+
+
   
 }
