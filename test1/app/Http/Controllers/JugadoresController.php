@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jugador;
 use App\Models\Equipo;
+use Illuminate\Support\Facades\Storage; // Sirve para el Storage::delete
 
 class JugadoresController extends Controller
 {
@@ -27,9 +28,26 @@ class JugadoresController extends Controller
     }
 
     public function edit(Jugador $jugador){
-        return view('jugadores.edit',compact('jugador'));
+        $equipos = Equipo::all();
+        return view('jugadores.edit',compact('jugador','equipos'));
     }
 
+    public function update(JUgador $jugador,Request $request){
+        $jugador -> nombre = $request->nombre;
+        $jugador -> apellido = $request->apellido;
+        $jugador -> posicion = $request->posicion;
+        $jugador -> numero = $request->numero;
+        $jugador -> equipo_id = $request->equipo;
+        if(isset($request->imagen)){
+            //Borrar la imagen actual
+            Storage::delete($jugador->imagen);
+            //Subir la nueva imagen
+            $jugador -> imagen = $request->imagen->store('public/jugadores');
+        }
+        $jugador -> save();
+        return redirect()->route('jugadores.index');
+    }
+        
 
   
 }

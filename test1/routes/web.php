@@ -33,3 +33,4 @@ Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.
 
 //Editar: 
 Route::get('/jugadores/{jugador}/edit',[JugadoresController::class,'edit'])->name('jugadores.edit');
+Route::put('/jugadores/{jugador}',[JugadoresController::class,'update'])->name('jugadores.update');

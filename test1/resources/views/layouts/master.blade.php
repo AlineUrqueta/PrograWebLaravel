@@ -18,7 +18,7 @@
                 Bienvenido <span class="fw-bold">User1</span>
             </div>
             <div class="col-3 text-end d-none d-lg-block">
-                Último inicio de sesión 01/04/2023 a las 18:34
+                Último inicio de sesión 19/05/2023 a las 11:39
             </div>
             <div class="col-1 text-end d-none d-lg-block">
                 <a href="/login" class="text-white">Cerrar Sesión</a>
@@ -42,7 +42,7 @@
                             <a class="nav-link @if(Route::current()->getName()== 'home.index') active @endif" aria-current="page" href="{{route('home.index')}}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName()== 'equipos.index') active @endif " href="{{route('equipos.index')}}">Equipos</a>
+                            <a class="nav-link @if(Request::segments()[0]== 'equipos') active @endif " href="{{route('equipos.index')}}">Equipos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadios</a>
@@ -51,7 +51,8 @@
                             <a class="nav-link" href="#">Estadísticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName()== 'jugadores.index') active @endif " href="{{route('jugadores.index')}}">Jugadores</a>
+                           {{--  <a class="nav-link @if(Route::current()->getName()== 'jugadores.index') active @endif " href="{{route('jugadores.index')}}">Jugadores</a> --}}
+                           <a class="nav-link @if(Request::segments()[0]== 'jugadores') active @endif " href="{{route('jugadores.index')}}">Jugadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Partidos</a>
