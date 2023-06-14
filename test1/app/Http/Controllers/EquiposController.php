@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipo;
+use App\Http\Requests\EquipoRequest;
 
 class EquiposController extends Controller
 {
@@ -16,7 +17,7 @@ class EquiposController extends Controller
         //dd('store'); //Muestra un mensaje en el localhost8000
     //}
 
-    public function store(Request $request){
+    public function store(EquipoRequest $request){
         //dd($request->nombre);
         $equipo = new Equipo();
         $equipo ->nombre = $request->nombre;
@@ -33,6 +34,8 @@ class EquiposController extends Controller
     public function show(Equipo $equipo){
         return view('equipos.show',compact('equipo'));
     }
+
+
 
     
 }

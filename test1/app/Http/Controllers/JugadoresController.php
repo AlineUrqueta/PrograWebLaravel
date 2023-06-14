@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Jugador;
 use App\Models\Equipo;
 use Illuminate\Support\Facades\Storage; // Sirve para el Storage::delete
+use App\Http\Requests\JugadoresRequest;
 
 class JugadoresController extends Controller
 {
@@ -15,7 +16,7 @@ class JugadoresController extends Controller
         return view('jugadores.index',compact('jugadores','equipos'));
     }
 
-    public function store(Request $request){
+    public function store(JugadoresRequest $request){
         $jugador = new Jugador();
         $jugador -> nombre = $request->nombre;
         $jugador -> apellido = $request->apellido;

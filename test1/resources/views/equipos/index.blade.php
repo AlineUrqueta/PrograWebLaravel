@@ -95,21 +95,39 @@
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Equipo</div>
                 <div class="card-body">
+                    <!-- errores -->
+                    @if ($errors->any())
+                    {{--{{dd($errors->all())}}--}}
+                        
+                        <div class="alert alert-danger">
+                            <p>Por favor solucione los siguientes errores:</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <!--errores-->
+
+                    
                     <form action = "{{route('equipos.store')}}" method="POST">
                         @csrf
                         <!-- for, id y name deben tener el mismo nombre. -->
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>  
-                            <input type="text" name ="nombre" id="nombre" class="form-control">
+                            <input type="text" name ="nombre" id="nombre" class="form-control @error('nombre') is-invalid @enderror" value ="{{old('nombre')}}">
                         </div>
                         <div class="mb-3">
                             <label for="entrenador" class="form-label">Entrenador</label>
-                            <input type="text" name = "entrenador" id="entrenador" class="form-control">
+                            <input type="text" name = "entrenador" id="entrenador" class="form-control @error('entrenador') is-invalid @enderror" value ="{{old('entrenador')}}">
                         </div>
+                        
                         <div class="mb-3 d-grid gap-2 d-lg-block">
                             <button type = "reset" class="btn btn-warning">Cancelar</button>
                             <button type = "submit" class="btn btn-success">Agregar Equipo</button>
                         </div>
+
                     </form>
                 </div>
             </div>

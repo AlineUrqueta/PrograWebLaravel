@@ -55,6 +55,20 @@
             <div class="card">
                 <div class="card-header bg-dark text-white">Agregar Jugadores</div>
                 <div class="card-body">
+                    <!-- errores -->
+                    @if ($errors->any())
+                    {{--{{dd($errors->all())}}--}}
+                        
+                        <div class="alert alert-danger">
+                            <p>Por favor solucione los siguientes errores:</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <!--errores-->
                     <form action = "{{route('jugadores.store')}}" method="POST" enctype = "multipart/form-data">
                         @csrf
                         <!-- for, id y name deben tener el mismo nombre. -->
