@@ -35,21 +35,36 @@
                         <small>Proporcione sus credenciales para ingresar al sistema</small>
                         <div class="card">
                             <div class="card-body">
-                                <form action="">
+                                <form method="POST" action = "{{route('usuarios.login')}}">
+                                    @csrf
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Nombre de Usuario</label>
-                                        <input type="text" id="username" class="form-control">
+                                        <label for="email" class="form-label">Correo</label>
+                                        <input type="text" id="email" name = "email" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Contraseña</label>
-                                        <input type="password" id="password" class="form-control">
+                                        <input type="password" id="password" name = "password" class="form-control">
                                     </div>
                                     <div class="mb-3 text-end">
-                                        <a href="{{route('home.index')}}" class="btn btn-success">Iniciar Sesión</a>
+                                        <button type ="submit" class="btn btn-success">Iniciar Sesión</button>
+                                        {{-- <a href="{{route('home.index')}}" class="btn btn-success">Iniciar Sesión</a> --}}
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        {{--Validaciones--}}
+                        @if ($errors->any())
+                            <div class="alert alert-warning mt-2">
+                                <ul class ="mb-0">
+                                    
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach    
+                                </ul>
+                            </div>
+                        @endif 
+                        {{--Fin Validaciones--}}
+
                     </div>
                     <!-- /fin formulario -->
                 </div>

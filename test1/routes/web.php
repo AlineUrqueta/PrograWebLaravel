@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\JugadoresController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.
 //Editar: 
 Route::get('/jugadores/{jugador}/edit',[JugadoresController::class,'edit'])->name('jugadores.edit');
 Route::put('/jugadores/{jugador}',[JugadoresController::class,'update'])->name('jugadores.update');
+
+Route::post('/usuarios/login',[UsuariosController::class,'login'])->name('usuarios.login');
