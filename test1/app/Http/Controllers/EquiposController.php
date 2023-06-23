@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Equipo;
 use App\Http\Requests\EquipoRequest;
+use Gate;
 
 class EquiposController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function index(){
+        if (Gate::denies('usuarios-listar')){
+            return redirect()->route('home.index');
+        }
         $equipos = Equipo::all();
         return view('equipos.index',compact('equipos'));
     }

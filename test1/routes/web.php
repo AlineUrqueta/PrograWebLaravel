@@ -37,3 +37,4 @@ Route::get('/jugadores/{jugador}/edit',[JugadoresController::class,'edit'])->nam
 Route::put('/jugadores/{jugador}',[JugadoresController::class,'update'])->name('jugadores.update');
 
 Route::post('/usuarios/login',[UsuariosController::class,'login'])->name('usuarios.login');
+Route::get('/usuarios/logout',[UsuariosController::class,'logout'])->name('usuarios.logout');

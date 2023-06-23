@@ -10,6 +10,10 @@ use App\Http\Requests\JugadoresRequest;
 
 class JugadoresController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $jugadores = Jugador::all();
         $equipos = Equipo::all();

@@ -8,14 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
+
+    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $usuarios = Usuario::all();
+        $roles = Rol::all();
+        return view('Usuarios.index',compact('usuarios','roles'));
     }
 
     /**
@@ -94,9 +99,14 @@ class UsuariosController extends Controller
             return redirect()->route('home.index');
         }
         else{
-            //Caredenciales inconrrectas
+            //Caredenciales incorrectas
             return back()->withErrors('Credenciales incorrectas');
         }
 
+    }
+
+    public function logount(){
+        Auth::logout();
+        return redirect()->route('home.login');
     }
 }
